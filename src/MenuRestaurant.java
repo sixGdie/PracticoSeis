@@ -12,9 +12,8 @@ public class MenuRestaurant {
 			double precioPlato = leerPrecioPlato();
 			System.out.println("Si es una bebida, ingrese 'SI'.");
 			plato.setNombreCompleto(nombrePlato);
+			plato.setPrecio(precioPlato);
 			plato.setEsBebida(new Scanner(System.in).nextLine());
-
-			System.out.println(plato.getEsBebida());
 
 			if (!plato.getEsBebida()) {
 
@@ -64,7 +63,7 @@ public class MenuRestaurant {
 
 	static double leerPrecioPlato() {
 
-		System.out.println("Ingrese el precio del plato ingresaod:");
+		System.out.println("Ingrese el precio del plato:");
 		double precioPlato = new Scanner(System.in).nextDouble();
 
 		if (precioPlato <= 0) {
@@ -123,7 +122,7 @@ public class MenuRestaurant {
 	}
 
 	static boolean deseaSeguir(String seguir) {
-		
+
 		if (seguir.equalsIgnoreCase("SI")) {
 
 			return true;
@@ -134,44 +133,46 @@ public class MenuRestaurant {
 			return false;
 
 		}
-		
+
 		return true;
 
 	}
-	
+
 	static void imprimirPlatos(ArrayList<Plato> platosMenu) {
-		 
+
 		System.out.println("--------------MENÚ--------------");
-		
+
 		for (Plato p : platosMenu) {
-			
+
 			System.out.println(p.getNombreCompleto());
 			System.out.println("Precio: $ " + p.getPrecio());
-			if(!p.getEsBebida()) {
-				
+			if (!p.getEsBebida()) {
+
 				System.out.println("====================");
 				System.out.println("INGREDIENTES");
 				System.out.println("====================");
-				System.out.println("Ingrediente " + "\t" + completarConEspacios("Cantidad") + "\t" + completarConEspacios("Unidad de Medida"));
+				System.out.println("Ingrediente " + "\t" + completarConEspacios("Cantidad") + "\t"
+						+ completarConEspacios("Unidad de Medida"));
 				System.out.println();
 				for (Ingrediente i : p.getIngredientes()) {
-					
-					System.out.println(i.getNombre() + "\t\t" + completarConEspacios(Double.toString(i.getCantidad()) + "\t\t" + completarConEspacios(i.getUnidadMedida())));
-					
+
+					System.out.println(i.getNombre() + "\t\t" + completarConEspacios(
+							Double.toString(i.getCantidad()) + "\t\t" + completarConEspacios(i.getUnidadMedida())));
+
 				}
-				
+
 			}
-			
+
 		}
-		
+
 	}
-	
-    public static String completarConEspacios(String cadena){
-        int cantidadEspacios = 7 - cadena.length();
-        for(int i=0; i < cantidadEspacios; i++){
-            cadena += " ";
-        }
-        return cadena;
-    }
+
+	public static String completarConEspacios(String cadena) {
+		int cantidadEspacios = 7 - cadena.length();
+		for (int i = 0; i < cantidadEspacios; i++) {
+			cadena += " ";
+		}
+		return cadena;
+	}
 
 }

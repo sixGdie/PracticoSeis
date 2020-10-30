@@ -8,9 +8,9 @@ public class DDJJStockAgroquimico {
 	private String empresa;
 	private long cuit;
 	private ArrayList<DDJJStockAgroquimicoDetalle> detallesAgroquimicos;
-	
+
 	public DDJJStockAgroquimico() {
-		
+
 	}
 
 	public int getAnioDeclaracion() {
@@ -52,7 +52,7 @@ public class DDJJStockAgroquimico {
 	public void setCuit(long cuit) {
 		this.cuit = cuit;
 	}
-	
+
 	public ArrayList<DDJJStockAgroquimicoDetalle> getDetallesAgroquimicos() {
 		return detallesAgroquimicos;
 	}
@@ -62,19 +62,20 @@ public class DDJJStockAgroquimico {
 	}
 
 	public void calcularTotalKiloLitros() {
-		
+
 		double total = 0;
 		for (DDJJStockAgroquimicoDetalle detalle : this.detallesAgroquimicos) {
-			
+
 			total += detalle.getSubTotal();
-			
+
 		}
 		this.totalKiloLitros = total;
-		
+
 	}
-	
-	public void asignarDatos(String codigoAgroquimico, String nombreAgroquimico, double capacidadEnvase, int cantidadEnvases, double subTotal, String numeroLote) {
-		
+
+	public void asignarDatos(String codigoAgroquimico, String nombreAgroquimico, double capacidadEnvase,
+			int cantidadEnvases, double subTotal, String numeroLote) {
+
 		DDJJStockAgroquimicoDetalle detalle = new DDJJStockAgroquimicoDetalle();
 		detalle.setCodigoAgroquimico(codigoAgroquimico);
 		detalle.setNombreAgroquimico(nombreAgroquimico);
@@ -82,17 +83,15 @@ public class DDJJStockAgroquimico {
 		detalle.setCantidadEnvases(cantidadEnvases);
 		detalle.setSubTotal(subTotal);
 		detalle.setNumeroLote(numeroLote);
-		
+
 		if (this.detallesAgroquimicos == null) {
-			
+
 			this.detallesAgroquimicos = new ArrayList<DDJJStockAgroquimicoDetalle>();
-			
+
 		}
-		
+
 		this.detallesAgroquimicos.add(detalle);
-		
+
 	}
-	
-	
-	
+
 }
